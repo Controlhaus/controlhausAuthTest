@@ -75,6 +75,26 @@ if (process.env.NODE_RED_USERNAME && process.env.NODE_RED_PASSWORD) {
     }
 }
 
+if (process.env.HTTP_NODE_USERNAME && process.env.HTTP_NODE_PASSWORD) {
+    settings.httpNodeAuth = {
+        function(user) {
+            if (process.env.HTTP_NODE_USERNAME == user) {
+                return when.resolve({user:user});
+            } else {
+                return when.resolve(null);
+            }
+        },
+        authenticate: function(user, password) {
+            if (process.env.HTTP_NODE_USERNAME == user &&
+                process.env.HTTP_NODE_PASSWORD == password) {
+                return when.resolve({user:user});
+            } else {
+                return when.resolve(null);
+            }
+        }
+    }
+}
+
 settings.couchAppname = process.env.NODE_RED_APPLICATION_NAME || VCAP_APPLICATION['application_name'];
 
 
