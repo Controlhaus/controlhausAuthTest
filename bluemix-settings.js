@@ -51,7 +51,9 @@ var settings = module.exports = {
 
     functionGlobalContext: { },
 
-    storageModule: require("./couchstorage")
+    storageModule: require("./couchstorage"),
+
+    httpNodeAuth: {user:"user",pass:"$2a$08$1xL8Qxvs9AKoTYIzOtnTDuxORXMGngwUr5HTdG32EyOo0KICqT.NO"}
 }
 
 if (process.env.NODE_RED_USERNAME && process.env.NODE_RED_PASSWORD) {
@@ -68,26 +70,6 @@ if (process.env.NODE_RED_USERNAME && process.env.NODE_RED_PASSWORD) {
             if (process.env.NODE_RED_USERNAME == username &&
                 process.env.NODE_RED_PASSWORD == password) {
                 return when.resolve({username:username,permissions:"*"});
-            } else {
-                return when.resolve(null);
-            }
-        }
-    }
-}
-
-if (process.env.HTTP_NODE_USERNAME && process.env.HTTP_NODE_PASSWORD) {
-    settings.httpNodeAuth = {
-        user: function(user) {
-            if (process.env.HTTP_NODE_USERNAME == user) {
-                return when.resolve({user:user});
-            } else {
-                return when.resolve(null);
-            }
-        },
-        authenticate: function(user, password) {
-            if (process.env.HTTP_NODE_USERNAME == user &&
-                process.env.HTTP_NODE_PASSWORD == password) {
-                return when.resolve({user:user});
             } else {
                 return when.resolve(null);
             }
