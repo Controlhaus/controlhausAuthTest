@@ -53,7 +53,7 @@ var settings = module.exports = {
 
     storageModule: require("./couchstorage"),
 
-    httpNodeAuth: {user:"user",pass:"$2a$08$1xL8Qxvs9AKoTYIzOtnTDuxORXMGngwUr5HTdG32EyOo0KICqT.NO"}
+    httpNodeAuth: {user:"user",pass:"$2a$06$UnsCcH3t6HzawNCg2p4TTuMKZUEE7E643g8dOrf4mtlpu1kArTRy2"}
 }
 
 if (process.env.NODE_RED_USERNAME && process.env.NODE_RED_PASSWORD) {
