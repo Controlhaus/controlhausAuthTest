@@ -77,7 +77,7 @@ if (process.env.NODE_RED_USERNAME && process.env.NODE_RED_PASSWORD) {
 
 if (process.env.HTTP_NODE_USERNAME && process.env.HTTP_NODE_PASSWORD) {
     settings.httpNodeAuth = {
-        function(user) {
+        user: function(user) {
             if (process.env.HTTP_NODE_USERNAME == user) {
                 return when.resolve({user:user});
             } else {
